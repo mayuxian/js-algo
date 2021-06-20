@@ -7,7 +7,7 @@ const { ncp } = require('ncp')
 const { promisify } = util
 
 //cwd()会由于命令执行目录不同,而返回的路径也不一致,不可采用此种方式
-// console.log('process.cwd()', process.cwd()); 
+// console.log('process.cwd()', process.cwd());
 //process.env.PWD是进程工作时的目录
 const rootDir = path.join(__dirname, '../')
 
@@ -20,8 +20,14 @@ async function build(option) {
   try {
     build(configFactory({
       input: './src/index.js',
-      fileName: './index.min.js',
+      fileName: './index.umd.min.js',
+      format: 'umd'
     }))
+    // build(configFactory({
+    //   input: './src/index.js',
+    //   fileName: './index.cjs.min.js',
+    //   format: 'commonjs'
+    // }))
 
     await promisify(ncp)(path.join(rootDir, './types'), './')
 
