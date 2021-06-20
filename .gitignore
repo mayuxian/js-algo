@@ -1,0 +1,24 @@
+# OSX
+.DS_Store
+
+# IDE
+.idea
+.vscode
+
+# npm
+node_modules
+
+# jest
+coverage
+
+# build
+/test
+/locale
+/plugin
+/dist
+/esm
+/index.d.ts
+*.min.js
+
+#dev
+demo.js
