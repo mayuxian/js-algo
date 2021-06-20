@@ -19,6 +19,7 @@ module.exports = (config) => {
           extensions,
           modulesOnly: true,
         }),
+        //TODO:支持tslint的配置
         tslint({
           // throwOnError: true,
           // throwOnWarning: true,
