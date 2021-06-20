@@ -19,12 +19,12 @@ async function build(option) {
 (async () => {
   try {
     build(configFactory({
-      input: './src/index.js',
-      fileName: './index.umd.min.js',
+      input: './src/index.ts',
+      fileName: './dist/index.umd.min.js',
       format: 'umd'
     }))
     // build(configFactory({
-    //   input: './src/index.js',
+    //   input: './src/index.ts',
     //   fileName: './index.cjs.min.js',
     //   format: 'commonjs'
     // }))
