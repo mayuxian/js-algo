@@ -18,7 +18,7 @@ module.exports = (config) => {
     output: {
       file: fileName,
       format: 'umd',
-      name: name || '$timers',
+      name: name || '$ALGO',
       globals: {}
     }
   }
