@@ -1,3 +1,5 @@
+const path = require('path')
+const resolve = _path => path.resolve(__dirname, _path)
 module.exports = {
   env: {
     "browser": true,
@@ -13,19 +15,18 @@ module.exports = {
     // "eslint:recommended",
     // "plugin:@typescript-eslint/eslint-recommended",
     'plugin:@typescript-eslint/recommended',
-    'prettier/@typescript-eslint',
+    'prettier',
     'plugin:prettier/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2020,
-    "sourceType": "module",
+    sourceType: "module",
     parser: '@typescript-eslint/parser', //ts
-    // project: path.resolve(__dirname, './tsconfig.json'),
-    // tsconfigRootDir: __dirname,
+    project: resolve('./tsconfig.json'),
+    tsconfigRootDir: __dirname,
   },
   plugins: [
-    // "vue",
     // "@typescript-eslint"
   ],
   rules: {

@@ -23,13 +23,13 @@ async function build(option) {
       fileName: './dist/index.umd.min.js',
       format: 'umd'
     }))
-    build(configFactory({
-      input: './src/index.ts',
-      fileName: './dist/index.cjs.min.js',
-      format: 'commonjs'
-    }))
+    // build(configFactory({
+    //   input: './src/index.ts',
+    //   fileName: './dist/index.cjs.min.js',
+    //   format: 'commonjs'
+    // }))
 
-    await promisify(ncp)(path.join(rootDir, './types'), './')
+    // await promisify(ncp)(path.join(rootDir, './types'), './')
 
     // list locales
     // await listLocaleJson(locales)

@@ -1,12 +1,19 @@
+
+const path = require('path')
+const getPath = _path => path.resolve(__dirname, _path)
 const { babel } = require('@rollup/plugin-babel')
-//TODO:支持commonjs
-// const { commonjs } = '@rollup/plugin-commonjs' // commonjs模块转换插件
-// const { nodeResolve } = require('@rollup/plugin-node-resolve');
+const { nodeResolve } = require('@rollup/plugin-node-resolve');
 const uglify = require('rollup-plugin-uglify')
-// const typescript = require('@rollup/plugin-typescript')
-// const typescript=require('rollup-plugin-typescript')
-// const tslint = require('rollup-plugin-tslint')
+const typescript = require('rollup-plugin-typescript2')
 const extensions = ['.js', '.ts', '.jsx', '.tsx'];
+
+const eslint = require('@rollup/plugin-eslint') // eslint插件
+// eslint
+const esPlugin = eslint({
+  throwOnError: true,
+  include: ['src/**/*.ts'],
+  exclude: ['node_modules/**']
+})
 
 module.exports = (config) => {
   const { input, fileName, name, format } = config
@@ -15,27 +22,22 @@ module.exports = (config) => {
       input,
       external: [],
       plugins: [
-        // nodeResolve({
-        //   extensions,
-        //   modulesOnly: true,
-        // }),
-        //TODO:支持tslint的配置
-        // tslint({
-        //   // throwOnError: true,
-        //   // throwOnWarning: true,
-        //   // include: ['src/**/*.ts', 'src/**/*.tsx'],
-        //   // exclude: ['node_modules/**', '*.js', '*.scss', '*.css'],
-        // }),
-        // typescript(),
-
-        // commonjs(),
-        babel({
-          babelHelpers: 'bundled',
-          exclude: 'node_modules/**',
+        //加载外部模块
+        nodeResolve({
           extensions,
+          modulesOnly: true,
         }),
-        // resolve(), //加载外部模块
-        uglify()
+        esPlugin,
+        typescript({
+          tsconfig: getPath('../tsconfig.json'), // 导入本地ts配置
+          // extensions
+        }),
+        // babel({
+        //   babelHelpers: 'bundled',
+        //   exclude: 'node_modules/**',
+        //   extensions,
+        // }),
+        // uglify()
       ]
     },
     output: {
