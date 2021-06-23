@@ -30,6 +30,8 @@ module.exports = (config) => {
         esPlugin,
         typescript({
           tsconfig: getPath('../tsconfig.json'), // 导入本地ts配置
+          declarationDir:'./types',
+          useTsconfigDeclarationDir: false,  //TODO:设置成true,必须每次删除types目录
           // extensions
         }),
         // babel({

@@ -10,11 +10,12 @@
     "declaration": true, // 是否自动创建类型声明文件
     "declarationMap": true, // 生成定义sourceMap
     "declarationDir": "./types", // 类型声明文件的输出目录
-
     "noImplicitAny": true, // 是否默认禁用 any
     "removeComments": true, // 是否移除注释
     "preserveConstEnums": true,
     "sourceMap": true,
+    // "sourceRoot":"./dist",
+    // "mapRoot":"",
     "target": "esnext",
     "module": "esnext", // 指定生成哪个模块系统代码
     "strict": true,

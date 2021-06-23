@@ -1,10 +1,8 @@
 const rollup = require('rollup')
 const configFactory = require('./rollup.config')
-const util = require('util')
 const path = require('path')
-const { ncp } = require('ncp')
-
-const { promisify } = util
+// const { ncp } = require('ncp')
+// const { promisify } = require('util')
 
 //cwd()会由于命令执行目录不同,而返回的路径也不一致,不可采用此种方式
 // console.log('process.cwd()', process.cwd());
