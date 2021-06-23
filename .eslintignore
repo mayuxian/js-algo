@@ -1,2 +1,5 @@
 .cache/
 node_modules/
+dist/
+build/
+esm/
