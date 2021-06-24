@@ -5,3 +5,4 @@ build/
 esm/
 tsconfig.json
 .eslintrc.js
+docs/
