@@ -1,6 +1,7 @@
 const rollup = require('rollup')
 const configFactory = require('./rollup.config')
 const path = require('path')
+const del = require('del');
 // const { ncp } = require('ncp')
 // const { promisify } = require('util')
 
@@ -16,6 +17,7 @@ async function build(option) {
 
 (async () => {
   try {
+    await del(['types'])
     build(configFactory({
       input: './src/index.ts',
       fileName: './dist/index.umd.min.js',
@@ -26,7 +28,6 @@ async function build(option) {
     //   fileName: './dist/index.cjs.min.js',
     //   format: 'commonjs'
     // }))
-
     // await promisify(ncp)(path.join(rootDir, './types'), './')
 
     // list locales

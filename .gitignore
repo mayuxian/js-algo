@@ -17,6 +17,7 @@ coverage
 /plugin
 /dist
 /esm
+/types
 /index.d.ts
 *.min.js
 /build/
