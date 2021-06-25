@@ -48,8 +48,8 @@ module.exports = {
   //   stylelintIntegration: true,
   // 结尾是 \n \r \n\r auto
   endOfLine: 'auto',
-  wrapAttributes: false
+  wrapAttributes: false,
   // sortAttributes: false
   // 不格式化vue文件，vue文件的格式化单独设置
-  // disableLanguages: ['vue']
+  disableLanguages: ['vue']
 }

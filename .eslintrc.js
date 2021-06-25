@@ -2,6 +2,7 @@ const path = require('path')
 const resolve = _path => path.resolve(__dirname, _path)
 module.exports = {
   env: {
+    "es6": true,
     "browser": true,
     "node": true,
     'commonjs': true,
@@ -27,7 +28,7 @@ module.exports = {
     tsconfigRootDir: __dirname,
   },
   plugins: [
-    // "@typescript-eslint"
+    "@typescript-eslint"
   ],
   rules: {
     // "off"或0 -关闭规则
@@ -83,7 +84,6 @@ module.exports = {
     'prettier/prettier': 'off',
     'no-prototype-builtins': 'off',
     'space-before-function-paren': 0,
-    // "vue/no-unused-vars": "off", //设置vue中的配置
     'no-unused-vars': [
       'warn',
       {

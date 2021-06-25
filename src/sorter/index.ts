@@ -2,7 +2,7 @@ import {SorterOptions} from './sorter-options'
 
 export class AlgoSorter {
   //冒泡排序
-  bubbleSort(data:Array<any>, options:SorterOptions) {
+  bubbleSort(data:Array<any>, options?:SorterOptions) {
     for (let i = 0; i < data.length; i++) {
       const datai = data[i];
       for (let j = 0; j < data.length; j++) {

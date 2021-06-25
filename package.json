@@ -10,7 +10,7 @@
   "scripts": {
     "babel": "cross-env BABEL_ENV=build tsc src/index.ts --outDir esm  && node build/esm",
     "build": "cross-env BABEL_ENV=build node build/index",
-    "test": "jest test/index --coverage=false",
+    "test": "jest",
     "prettier": "prettier --write \"docs/**/*.md\"",
     "lint": "./node_modules/.bin/eslint src/* test/* build/*",
     "pub": "npm publish",
@@ -28,18 +28,6 @@
     "算法",
     "排序"
   ],
-  "jest": {
-    "roots": [
-      "test"
-    ],
-    "testRegex": "test/(.*?/)?.*test.(j|t)s$",
-    "testURL": "http://localhost",
-    "coverageDirectory": "./coverage/",
-    "collectCoverage": true,
-    "collectCoverageFrom": [
-      "src/**/*"
-    ]
-  },
   "homepage": "https://github.com/mayuxian/js-algo/blob/main/README.md",
   "repository": {
     "type": "git",
@@ -61,6 +49,7 @@
     "@rollup/plugin-node-resolve": "^13.0.0",
     "@rollup/plugin-replace": "^2.3.2",
     "@rollup/plugin-typescript": "^8.2.1",
+    "@types/jest": "^26.0.23",
     "@typescript-eslint/eslint-plugin": "^4.27.0",
     "@typescript-eslint/parser": "^4.27.0",
     "chalk": "^4.1.1",
@@ -84,6 +73,7 @@
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-typescript2": "^0.30.0",
     "rollup-plugin-uglify": "^3.0.0",
+    "ts-jest": "^27.0.3",
     "typescript": "^4.3.4"
   },
   "husky": {
