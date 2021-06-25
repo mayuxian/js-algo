@@ -13,7 +13,7 @@
     "noImplicitAny": true, // 是否默认禁用 any
     "removeComments": true, // 是否移除注释
     "preserveConstEnums": true,
-    "sourceMap": true,
+    "sourceMap": false,
     // "sourceRoot":"./dist",
     // "mapRoot":"",
     "target": "esnext",

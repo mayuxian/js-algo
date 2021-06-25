@@ -1,2 +1,1 @@
-// export { SorterCondidtionExps, SorterOptions } from './sorter-lib'
-export * from './sorter-options'
+export * from './type-checker'
