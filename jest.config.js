@@ -4,14 +4,19 @@
  */
 
 module.exports = {
-  // globals: {
-  //   // work around: https://github.com/kulshekhar/ts-jest/issues/748#issuecomment-423528659
-  //   'ts-jest': {
-  //     diagnostics: {
-  //       ignoreCodes: [151001],
-  //     },
-  //   },
-  // },
+  globals: {
+
+    'ts-jest': {
+      tsConfig: {
+        target: 'esnext'
+      },
+      //  // work around: https://github.com/kulshekhar/ts-jest/issues/748#issuecomment-423528659
+      // diagnostics: {
+      //   ignoreCodes: [151001],
+      // },
+    },
+  },
+
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
@@ -22,7 +27,7 @@ module.exports = {
   // cacheDirectory: "C:\\Users\\mayuxian\\AppData\\Local\\Temp\\jest",
 
   // Automatically clear mock calls and instances between every test
-  // clearMocks: false,
+  clearMocks: true,
 
   // Indicates whether the coverage information should be collected while executing the test
   // collectCoverage: false,
@@ -39,7 +44,7 @@ module.exports = {
   // ],
 
   // Indicates which provider should be used to instrument code for coverage
-  coverageProvider: "v8",  //or babel
+  coverageProvider: "babel",  //or babel
 
   // A list of reporter names that Jest uses when writing coverage reports
   // coverageReporters: [
@@ -102,6 +107,7 @@ module.exports = {
 
   // A preset that is used as a base for Jest's configuration
   // preset: undefined,
+  // preset: "ts-jest",
 
   // Run tests from one or more projects
   // projects: undefined,
@@ -166,6 +172,7 @@ module.exports = {
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
   // testRegex: [],
+  // testRegex: '/tests/**/(.+)\\.test\\.(jsx?|tsx?)$',
 
   // This option allows the use of a custom results processor
   // testResultsProcessor: undefined,
@@ -182,27 +189,27 @@ module.exports = {
   // A map from regular expressions to paths to transformers
   // transform: undefined,
   // custom:
-  //  transform: {
-  //   '^.+\\.(t|j)sx?$': [
-  //     'babel-jest', {
-  //       presets: [
-  //         [
-  //           '@babel/preset-env',
-  //           {
-  //             targets: {
-  //               node: true,
-  //             },
-  //           },
-  //         ],
-  //         '@babel/preset-typescript',
-  //       ],
-  //       plugins: [
-  //         '@babel/plugin-proposal-class-properties',
-  //       ],
-  //     },
+  transform: {
+     // '^.+\\.[jt]sx?$': "ts-jest",
+    '^.+\\.[jt]sx?$': [
+      "babel-jest", {
+        presets: [
+          [
+            '@babel/preset-env',
+            {
+              targets: {
+                node: true,
+              },
+            },
+          ],
+          '@babel/preset-typescript',
+        ]
+      }],
+    plugins: [
+      '@babel/plugin-proposal-class-properties',
+    ],
+  },
 
-  //   ],
-  // },
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [
   //   "\\\\node_modules\\\\",

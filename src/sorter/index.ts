@@ -3,12 +3,11 @@ import {SorterOptions} from './sorter-options'
 export class AlgoSorter {
   //冒泡排序
   bubbleSort(data:Array<any>, options?:SorterOptions) {
-    for (let i = 0; i < data.length; i++) {
-      const datai = data[i];
-      for (let j = 0; j < data.length; j++) {
-        const dataj = data[j];
-        if (datai > dataj) {
-          this.swapValue(data, i, j)
+    if(!data||data.length<2)return
+    for (let i = 0; i < data.length-1; i++) {
+      for (let j = 0; j < data.length-1-i; j++) {
+        if (data[j] > data[j+1]) {
+          this.swapValue(data, j, j+1)
         }
       }
     }
@@ -171,8 +170,11 @@ export class AlgoSorter {
     }
   }
   swapValue(arr:Array<any>, i:number, j:number) {
-    arr[i] = arr[i] + arr[j]
-    arr[j] = arr[i] - arr[j]
-    arr[i] = arr[i] - arr[j]
+    // arr[i] = arr[i] + arr[j]
+    // arr[j] = arr[i] - arr[j]
+    // arr[i] = arr[i] - arr[j]
+    const temp=arr[i]
+    arr[i]=arr[j]
+    arr[j]=temp
   }
 }
