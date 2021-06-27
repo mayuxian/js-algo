@@ -1,13 +1,18 @@
 import {SorterOptions} from './sorter-options'
+import { SorterHooks } from "./sorter-hooks";
 
 export class AlgoSorter {
   //冒泡排序
-  bubbleSort(data:Array<any>, options?:SorterOptions) {
-    if(!data||data.length<2)return
-    for (let i = 0; i < data.length-1; i++) {
-      for (let j = 0; j < data.length-1-i; j++) {
-        if (data[j] > data[j+1]) {
-          this.swapValue(data, j, j+1)
+  bubbleSort(arr:Array<any>, options?:SorterOptions,hooks?:SorterHooks) {
+    if(options?.returnNewObject){
+      arr=arr.slice(0)
+    }
+    if(!arr||arr.length<2)return
+    for (let i = 0; i < arr.length-1; i++) {
+      for (let j = 0; j < arr.length-1-i; j++) {
+        const canSwap=options?.equalFunCb?options.equalFunCb(arr,i,j):arr[j] > arr[j+1]
+        if (canSwap) {
+          this.swapValue(arr, j, j+1)
         }
       }
     }
