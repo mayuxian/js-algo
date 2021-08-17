@@ -155,10 +155,10 @@ export class AlgoSorter {
       }
     })
     const _bucketSize = Math.floor((maxVal - minVal) / bucketSize) + 1
-    const buckets = new Array(_bucketSize)
-    for (let i = 0; i < buckets.length; i++) {
-      buckets[i] = []
-    }
+    const buckets = new Array(_bucketSize).fill([])
+    // for (let i = 0; i < buckets.length; i++) {
+    //   buckets[i] = []
+    // }
 
     //利用分桶规则拆分
     arr.forEach(x => {
