@@ -88,9 +88,9 @@ export class AlgoSorter {
     return merge(this.mergeSort(left), this.mergeSort(right))
   }
   //快速排序
-  quickSort(data:Array<any>, args :any, options:any) {
-    const low = args.low || 0
-    const high = args.high || data?.length || 0
+  quickSort(data:Array<any>, low :any,high:any, options?:any) {
+    // const low = args.low || 0
+    // const high = args.high || data?.length || 0
     // 递归出口
     if (low > high) {
       return;
