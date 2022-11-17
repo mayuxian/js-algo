@@ -1,24 +1,24 @@
-import {SorterOptions} from './sorter-options'
+import { SorterOptions } from './sorter-options'
 import { SorterHooks } from "./sorter-hooks";
 
 export class AlgoSorter {
   //冒泡排序
-  bubbleSort(arr:Array<any>, options?:SorterOptions,hooks?:SorterHooks) {
-    if(options?.returnNewObject){
-      arr=arr.slice(0)
+  bubbleSort(arr: Array<any>, options?: SorterOptions, hooks?: SorterHooks) {
+    if (options?.returnNewObject) {
+      arr = arr.slice(0)
     }
-    if(!arr||arr.length<2)return
-    for (let i = 0; i < arr.length-1; i++) {
-      for (let j = 0; j < arr.length-1-i; j++) {
-        const canSwap=options?.equalFunCb?options.equalFunCb(arr,i,j):arr[j] > arr[j+1]
+    if (!arr || arr.length < 2) return
+    for (let i = 0; i < arr.length - 1; i++) {
+      for (let j = 0; j < arr.length - 1 - i; j++) {
+        const canSwap = options?.equalFunCb ? options.equalFunCb(arr, i, j) : arr[j] > arr[j + 1]
         if (canSwap) {
-          this.swapValue(arr, j, j+1)
+          this.swapValue(arr, j, j + 1)
         }
       }
     }
   }
   //选择排序
-  selectSort(arr:Array<any>) {
+  selectSort(arr: Array<any>) {
     let minValIndex = null
     for (let i = 0; i < arr.length - 1; i++) {
       minValIndex = i
@@ -31,7 +31,7 @@ export class AlgoSorter {
     }
   }
   //插入排序
-  insertionSort(arr:Array<any>) {
+  insertionSort(arr: Array<any>) {
     let preIndex = 0
     let curVal = null
     for (let i = 0; i < arr.length; i++) {
@@ -45,7 +45,7 @@ export class AlgoSorter {
     }
   }
   //希尔排序
-  shellSort(arr:Array<any>) {
+  shellSort(arr: Array<any>) {
     const len = arr.length
     for (let gap = Math.floor(len / 2); gap > 0; gap = Math.floor(gap / 2)) {
       for (let i = gap; i < len; i++) {
@@ -60,10 +60,10 @@ export class AlgoSorter {
     }
   }
   //归并排序
-  mergeSort(arr:Array<any>):any{
+  mergeSort(arr: Array<any>): any {
     const len = arr.length
     if (len < 2) return arr
-    const merge = (left:any, right:any) => {
+    const merge = (left: any, right: any) => {
       const result = []
       while (left.length && right.length) {
         if (left[0] <= right[0]) {
@@ -88,15 +88,13 @@ export class AlgoSorter {
     return merge(this.mergeSort(left), this.mergeSort(right))
   }
   //快速排序
-  quickSort(data:Array<any>, low :any,high:any, options?:any) {
-    // const low = args.low || 0
-    // const high = args.high || data?.length || 0
+  quickSort(data: Array<any>, low: any, high: any, options?: any) {
     // 递归出口
-    if (low > high) {
+    if (low >= high) {
       return;
     }
     //标记
-    let i:number = low;
+    let i: number = low;
     let j = high;
     const key = data[low];
 
@@ -129,10 +127,13 @@ export class AlgoSorter {
   }
 
   //计数排序
-  countingSort(arr:Array<any>, maxValue:number) {
+  countingSort(arr: Array<any>, maxValue: number) {
     const bucket = new Array(maxValue + 1)
     arr.forEach(val => {
-      bucket[val] = !bucket[val] ? 0 : bucket[val]++
+      if (!bucket[val]) {
+        bucket[val] = 0;
+      }
+      bucket[val]++;
     });
     let sortedIndex = 0
     for (let i = 0; i < bucket.length; i++) {
@@ -145,7 +146,7 @@ export class AlgoSorter {
     return arr;
   }
   //桶排序
-  bucketSort(arr:Array<any>, bucketSize:number) {
+  bucketSort(arr: Array<any>, bucketSize: number) {
     let minVal = 0, maxVal = 0
     arr.forEach(x => {
       if (x < minVal) {
@@ -168,18 +169,18 @@ export class AlgoSorter {
     //对每个桶排序
     arr = []
     for (let i = 0; i < buckets.length; i++) {
-      this.quickSort(buckets[i],null,null)
+      this.quickSort(buckets[i], 0, buckets.length - 1)
       for (let j = 0; j < buckets[i].length; j++) {
         arr.push(buckets[i][j]);
       }
     }
   }
-  swapValue(arr:Array<any>, i:number, j:number) {
+  swapValue(arr: Array<any>, i: number, j: number) {
     // arr[i] = arr[i] + arr[j]
     // arr[j] = arr[i] - arr[j]
     // arr[i] = arr[i] - arr[j]
-    const temp=arr[i]
-    arr[i]=arr[j]
-    arr[j]=temp
+    const temp = arr[i]
+    arr[i] = arr[j]
+    arr[j] = temp
   }
 }
